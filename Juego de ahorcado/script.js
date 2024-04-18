@@ -53,7 +53,10 @@ const correctLetter = letter => {
             hits++;
         }
     }
-    if(hits === selectedWord.length) endGame();
+    if(hits === selectedWord.length) { 
+        endGame();
+        clearInterval(timerInterval); // Detener el temporizador cuando se completa la palabra
+    }
 }
 
 const letterInput = letter => {
@@ -116,7 +119,7 @@ const startGame = () => {
 startButton.addEventListener('click', startGame);
 
 function startTimer() {
-    timeLeft = 60; // Cambia a la duración deseada en segundos
+    timeLeft = 30; // Cambia a la duración deseada en segundos
     timerInterval = setInterval(updateTimer, 1000);
 }
 
@@ -124,14 +127,17 @@ function updateTimer() {
     timeLeft--;
     document.getElementById('time').innerText = timeLeft;
     if (timeLeft === 0) {
-                clearInterval(timerInterval);
-                // Aquí puedes agregar lógica para manejar el final del tiempo, como reiniciar el juego, etc.
-                alert("¡El tiempo ha terminado! Fin del juego");
-            }
-        }
+        clearInterval(timerInterval);
+        alert("¡Tiempo agotado! El juego ha terminado.");
+    }
+}
 
-        document.getElementById('startButton').addEventListener('click', function() {
-            startTimer();
-            // Aquí puedes iniciar tu juego
-        });
-   
+document.getElementById('startButton').addEventListener('click', function() {
+    startTimer();
+    // Aquí puedes iniciar tu juego
+});
+// Ejemplo de cómo marcar la palabra como completada y detener el temporizador
+document.getElementById('wordContainer').addEventListener('click', function() {
+    clearInterval(timerInterval);
+    alert("¡Palabra completada! El juego ha terminado.");
+});

@@ -3,7 +3,7 @@
 }
 
 body{
-    background-image: url('img/ahorcado.png');
+    background-color:#663ebc;
     background-size: cover;
     padding: 20px;
     color:#fff ;
@@ -16,6 +16,11 @@ body{
 #timer{
     font-size: 24px;
     margin-bottom: 10px;
+}
+.hero {
+    position: relative; 
+    width: 100%;
+    overflow: hidden;
 }
 #wordContainer {
     margin-top: 20px;

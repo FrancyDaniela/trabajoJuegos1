@@ -4,6 +4,8 @@ const usedLettersElement = document.getElementById('usedLetters');
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
+let timeLeft = 0;
+let timerInterval;
 ctx.canvas.width = 0;
 ctx.canvas.height = 0;
 
@@ -112,3 +114,24 @@ const startGame = () => {
 };
 
 startButton.addEventListener('click', startGame);
+
+function startTimer() {
+    timeLeft = 60; // Cambia a la duración deseada en segundos
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+    timeLeft--;
+    document.getElementById('time').innerText = timeLeft;
+    if (timeLeft === 0) {
+                clearInterval(timerInterval);
+                // Aquí puedes agregar lógica para manejar el final del tiempo, como reiniciar el juego, etc.
+                alert("¡El tiempo ha terminado! Fin del juego");
+            }
+        }
+
+        document.getElementById('startButton').addEventListener('click', function() {
+            startTimer();
+            // Aquí puedes iniciar tu juego
+        });
+   

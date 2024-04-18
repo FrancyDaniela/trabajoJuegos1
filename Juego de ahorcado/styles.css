@@ -3,7 +3,9 @@
 }
 
 body{
-    background-color: #4a4063;
+    background-image: url('img/ahorcado.png');
+    background-size: cover;
+    padding: 20px;
     color:#fff ;
     font-family:'SF Pixelate', sans-serif ;
     display:flex ;
